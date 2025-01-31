@@ -1,1 +1,174 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cocktail Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      background: linear-gradient(to bottom, #3e2723, #000);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Container */
+    .menu-container {
+      padding: 12px 24px;
+      max-width: 800px;
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    /* Cocktail Card */
+    .cocktail-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 25px 0;
+    }
+
+    /* Alternate Layout */
+    .cocktail-card:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    /* Image */
+    .cocktail-card img {
+      width: 160px;
+      height: 160px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    /* Content */
+    .cocktail-content {
+      text-align: left;
+      flex: 1;
+      margin: 0 25px;
+    }
+
+    .cocktail-content h2 {
+      margin: 0;
+      font-size: 1.7rem;
+    }
+
+    .cocktail-content p {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .cocktail-content ul {
+      list-style-type: none;
+      line-height: 16px;
+      padding: 0;
+    }
+
+    .cocktail-content li {
+      font-size: 0.9rem;
+      margin: 6px 0;
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="menu-container">
+    <h1>Cocktail Menu</h1>
+    <div id="cocktail-list"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const data = [
+        {
+          "name": "Gin Rickey",
+          "image": "rickey.jpeg",
+          "ingredients": ["London Dry Gin", "Soda water", "Lime wedge"]
+        },
+        {
+          "name": "Negroni",
+          "image": "negroni.jpeg",
+          "ingredients": ["London Dry Gin", "Campari", "Sweet vermouth"]
+        },
+        {
+          "name": "Tom Collins",
+          "image": "collins.jpeg",
+          "ingredients": ["London Dry Gin", "Lemon sour mix", "Soda water"]
+        },
+        {
+          "name": "Gimlet",
+          "image": "gilet.jpeg",
+          "ingredients": ["London Dry Gin", "Lime Juice", "Simple Syrup"]
+        },
+        {
+          "name": "Gin Fizz",
+          "image": "ginfizz.jpeg",
+          "ingredients": ["London Dry Gin", "Lemon sour mix", "Soda Water"]
+        },
+        {
+          "name": "Gin Swizzle",
+          "image": "ginswizzle.jpeg",
+          "ingredients": ["London Dry Gin", "Lime sour mix", "Angostura bitters"]
+        },
+        {
+          "name": "Gin Manhattan",
+          "image": "ginmanhatan.jpeg",
+          "ingredients": ["London Dry Gin", "Sweet vermouth", "Angostura bitters"]
+        },
+        {
+          "name": "Orange Blossom Special (ala carte)",
+          "image": "blossom.jpeg",
+          "ingredients": ["London Dry Gin", "Fresh orange & mango juice", "Honey"]
+        },
+        {
+          "name": "Gin Pom",
+          "image": "pom.jpeg",
+          "ingredients": ["London Dry Gin", "Pomegranate juice", "Soda water"]
+        },
+        {
+          "name": "Marksmith",
+          "image": "smith.jpeg",
+          "ingredients": ["London Dry Gin", "Whiskey", "Sweet vermouth"]
+        },
+      ];
+
+      const cocktailList = document.getElementById("cocktail-list");
+
+      data.forEach((cocktail, index) => {
+        const card = document.createElement("div");
+        card.classList.add("cocktail-card");
+
+        card.innerHTML = `
+          <img src="${cocktail.image}" alt="${cocktail.name}">
+          <div class="cocktail-content">
+              <h2>${cocktail.name}</h2>
+              <ul>
+                  ${cocktail.ingredients.map(ingredient => `<li>${ingredient}</li>`).join("")}
+              </ul>
+          </div>
+        `;
+
+        cocktailList.appendChild(card);
+      });
+    });
+  </script>
+</body>
+
+</html>
